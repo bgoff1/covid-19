@@ -41,7 +41,7 @@ const app = new Vue({
       fetch("/last-update")
         .then((res) => res.text())
         .then((res) => {
-          const date = new Date(res);
+          const date = new Date(res.replace(/"/g, ""));
           const month = date.getMonth() + 1;
           const day = date.getDate() + 1;
           const year = date.getFullYear();

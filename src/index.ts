@@ -68,15 +68,22 @@ app.get("/last-update", async (req, res) => {
   try {
     if (countyData) {
       res.send(
-        countyData
-          .reduce((m, v, i) => (v.date > m.date && i ? v : m), {} as any)
-          .date?.toISOString()
+        new Date(
+          Math.max.apply(
+            null,
+            countyData.map((e) => new Date(e.date).valueOf())
+          )
+        )
       );
+      // countyData
+      //   .reduce((m, v, i) => (v.date > m.date && i ? v : m), {} as any)
+      //   .date.toISOString()
+      // );
     } else {
       throw new Error();
     }
   } catch (err) {
-    res.status(500).send("County Data not yet loaded");
+    res.status(500).send("County Data not yet loaded" + err);
     getCounties()
       .then((res) => {
         countyData = res;
