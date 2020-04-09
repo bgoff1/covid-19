@@ -14,7 +14,7 @@ const app = new Vue({
   },
   methods: {
     focusState: function (event, pushState = true) {
-      fetch("http://localhost:8080/state/counties/" + event)
+      fetch("/state/counties/" + event)
         .then((res) => res.json())
         .then((res) => {
           this.type = event.toLowerCase() === "louisiana" ? "Parish" : "County";
@@ -25,7 +25,7 @@ const app = new Vue({
         });
     },
     loadStates: function () {
-      fetch("http://localhost:8080/states")
+      fetch("/states")
         .then((res) => res.json())
         .then((res) => {
           this.states = res.sort((a, b) => b.value - a.value);
@@ -38,7 +38,7 @@ const app = new Vue({
       } else {
         this.loadStates();
       }
-      fetch("http://localhost:8080/last-update")
+      fetch("/last-update")
         .then((res) => res.text())
         .then((res) => {
           const date = new Date(res);
