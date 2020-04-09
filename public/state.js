@@ -29,6 +29,7 @@ const app = new Vue({
         .then((res) => res.json())
         .then((res) => {
           this.states = res.sort((a, b) => b.value - a.value);
+          this.type = "States";
           history.pushState("all", "States", "?state=all");
         });
     },
