@@ -1,0 +1,27 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Backend for COVID-19 Project",
+  "main": "dist/index.js",
+  "repository": "my-repo",
+  "dependencies": {
+    "fastify": "^2.13.0",
+    "fastify-cors": "^3.0.3",
+    "fastify-static": "^2.6.0",
+    "node-fetch": "^2.6.0",
+    "typescript": "^3.8.3"
+  },
+  "devDependencies": {
+    "@types/node-fetch": "^2.5.5",
+    "concurrently": "^5.1.0",
+    "nodemon": "^2.0.2"
+  },
+  "scripts": {
+    "build": "tsc",
+    "run": "npm build && npm start",
+    "start": "node .",
+    "dev": "concurrently \"tsc --watch\" \"nodemon .\""
+  },
+  "author": "",
+  "license": "ISC"
+}

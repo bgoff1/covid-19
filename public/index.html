@@ -1,0 +1,20 @@
+<head>
+  <title>COVID-19 Tracker</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <button v-on:click="loadStates()">Home</button>
+    <h1>COVID-19 {{type}} Tracker</h1>
+    <ul>
+      <li v-for="state in states">
+        <strong v-on:click="focusState(state.name)">{{state.name}}</strong>
+        - {{state.value}}
+      </li>
+    </ul>
+    <footer>
+      Data from The New York Times --- Last Updated on {{lastCollection}}
+    </footer>
+  </div>
+  <script src="state.js"></script>
+</body>
