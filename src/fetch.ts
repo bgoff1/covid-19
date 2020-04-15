@@ -1,10 +1,10 @@
-import fetch from "node-fetch";
+import fetch from 'node-fetch';
 
 const countyURL =
-  "https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv";
+  'https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv';
 
 const stateURL =
-  "https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-states.csv";
+  'https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-states.csv';
 
 export class CountyItem {
   date: Date;
@@ -43,10 +43,10 @@ export class StateItem {
 export function getCounties(): Promise<CountyItem[]> {
   return fetch(countyURL)
     .then((res) => res.text())
-    .then((res) => {
+    .then((res: string) => {
       const data = res
-        .split("\n")
-        .map((item) => item.split(","))
+        .split('\n')
+        .map((item) => item.split(','))
         .slice(1);
       return data.map((item) => new CountyItem(item));
     });
@@ -55,10 +55,10 @@ export function getCounties(): Promise<CountyItem[]> {
 export function getStates(): Promise<StateItem[]> {
   return fetch(stateURL)
     .then((res) => res.text())
-    .then((res) => {
+    .then((res: string) => {
       const data = res
-        .split("\n")
-        .map((item) => item.split(","))
+        .split('\n')
+        .map((item) => item.split(','))
         .slice(1);
       return data.map((item) => new StateItem(item));
     });

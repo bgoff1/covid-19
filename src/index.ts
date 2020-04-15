@@ -7,17 +7,12 @@ let countyData: CountyItem[] = [];
 let stateData: StateItem[] = [];
 
 const port = process.env.PORT || 8080;
-// const app = fastify({ logger: false });
 const app = express();
-
-// app.register(require("fastify-static"), {
-//   root: path.join(__dirname, "..", "public"),
-// });
 
 function formatSums(sums: { [key: string]: any }) {
   return Object.keys(sums).map((item) => ({
     name: item,
-    value: sums[item].cases || sums[item],
+    value: sums[item].cases ?? sums[item],
   }));
 }
 
@@ -75,10 +70,6 @@ app.get("/last-update", async (req, res) => {
           )
         )
       );
-      // countyData
-      //   .reduce((m, v, i) => (v.date > m.date && i ? v : m), {} as any)
-      //   .date.toISOString()
-      // );
     } else {
       throw new Error();
     }
