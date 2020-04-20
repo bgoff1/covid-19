@@ -3,7 +3,7 @@ const app = new Vue({
   data: {
     states: [],
     showStates: true,
-    type: 'State',
+    type: 'States',
     lastCollection: '',
   },
   created: function () {
@@ -14,7 +14,7 @@ const app = new Vue({
   },
   methods: {
     focusState: function (event, pushState = true) {
-      if (this.state === 'State') {
+      if (this.state === 'States') {
         fetch('/state/counties/' + event)
           .then((res) => res.json())
           .then((res) => {
