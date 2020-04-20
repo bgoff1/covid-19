@@ -14,7 +14,7 @@ const app = new Vue({
   },
   methods: {
     focusState: function (event, pushState = true) {
-      if (this.state === 'States') {
+      if (this.type === 'States') {
         fetch('/state/counties/' + event)
           .then((res) => res.json())
           .then((res) => {
